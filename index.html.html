@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///C:/Users/PC/Downloads/globol%20calculator.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Mussab Global Masterpiece</title>
+    <style>
+        body { background: #000; color: #fff; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
+        .app { width: 360px; background: #111; border: 1px solid #333; border-radius: 20px; padding: 15px; box-shadow: 0 0 30px #00ff8822; }
+        
+        .tabs { display: flex; gap: 5px; margin-bottom: 15px; }
+        .tab { flex: 1; padding: 12px; border: none; background: #222; color: #888; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 11px; }
+        .active { background: #00ff88 !important; color: #000 !important; }
+
+        .page { display: flex; flex-direction: column; gap: 10px; }
+        .hide { display: none !important; }
+
+        /* CALCULATOR */
+        #scr { width: 100%; height: 60px; background: #000; border: 1px solid #333; color: #00ff88; text-align: right; font-size: 30px; border-radius: 10px; padding: 10px; box-sizing: border-box; }
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        .btn { height: 50px; border-radius: 10px; border: none; background: #222; color: #fff; font-size: 18px; cursor: pointer; }
+        .op { color: #00ff88; }
+
+        /* INPUTS */
+        select, input { padding: 12px; border-radius: 8px; background: #000; color: #fff; border: 1px solid #333; width: 100%; box-sizing: border-box; font-size: 14px; }
+        .res { font-size: 22px; color: #00ff88; text-align: center; margin-top: 10px; border: 1px solid #222; padding: 15px; border-radius: 10px; background: #050505; }
+        .swap-circ { background: #00ff88; color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; align-self: center; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="app">
+    <div class="tabs">
+        <button class="tab" id="b1" onclick="showP(&#39;p1&#39;,&#39;b1&#39;)">MATH</button>
+        <button class="tab" id="b2" onclick="showP(&#39;p2&#39;,&#39;b2&#39;)">WORLD SWAP</button>
+        <button class="tab active" id="b3" onclick="showP(&#39;p3&#39;,&#39;b3&#39;)">UNITS</button>
+    </div>
+
+    <div id="p1" class="page hide">
+        <input type="text" id="scr" readonly="">
+        <div class="grid">
+            <button class="btn op" onclick="document.getElementById(&#39;scr&#39;).value=&#39;&#39;">AC</button>
+            <button class="btn op" onclick="document.getElementById(&#39;scr&#39;).value=document.getElementById(&#39;scr&#39;).value.slice(0,-1)">C</button>
+            <button class="btn op" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;/&#39;">/</button>
+            <button class="btn op" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;*&#39;">x</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;7&#39;">7</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;8&#39;">8</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;9&#39;">9</button>
+            <button class="btn op" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;-&#39;">-</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;4&#39;">4</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;5&#39;">5</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;6&#39;">6</button>
+            <button class="btn op" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;+&#39;">+</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;1&#39;">1</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;2&#39;">2</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;3&#39;">3</button>
+            <button class="btn" style="background:#00ff88; color:#000" onclick="try{document.getElementById(&#39;scr&#39;).value=eval(document.getElementById(&#39;scr&#39;).value)}catch(e){document.getElementById(&#39;scr&#39;).value=&#39;Error&#39;}">=</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;0&#39;" style="grid-column: span 2">0</button>
+            <button class="btn" onclick="document.getElementById(&#39;scr&#39;).value+=&#39;.&#39;">.</button>
+        </div>
+    </div>
+
+    <div id="p2" class="page hide">
+        <select id="s1" onchange="runC()"><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Antigua">Antigua</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia">Bosnia</option><option value="Botswana">Botswana</option><option value="Brazil">Brazil</option><option value="Brunei">Brunei</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Cape Verde">Cape Verde</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo">Congo</option><option value="Costa Rica">Costa Rica</option><option value="Croatia">Croatia</option><option value="Cuba">Cuba</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libya">Libya</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="North Korea">North Korea</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palestine">Palestine</option><option value="Panama">Panama</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="Rwanda">Rwanda</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sudan">Sudan</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syria">Syria</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Togo">Togo</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Turkmenistan">Turkmenistan</option><option value="UAE">UAE</option><option value="UK">UK</option><option value="USA">USA</option><option value="Ukraine">Ukraine</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Vatican City">Vatican City</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option></select>
+        <button class="swap-circ" onclick="let x=document.getElementById(&#39;s1&#39;), y=document.getElementById(&#39;s2&#39;), t=x.value; x.value=y.value; y.value=t; runC();">⇅</button>
+        <select id="s2" onchange="runC()"><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Antigua">Antigua</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia">Bosnia</option><option value="Botswana">Botswana</option><option value="Brazil">Brazil</option><option value="Brunei">Brunei</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Cape Verde">Cape Verde</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo">Congo</option><option value="Costa Rica">Costa Rica</option><option value="Croatia">Croatia</option><option value="Cuba">Cuba</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libya">Libya</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="North Korea">North Korea</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palestine">Palestine</option><option value="Panama">Panama</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="Rwanda">Rwanda</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sudan">Sudan</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syria">Syria</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Togo">Togo</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Turkmenistan">Turkmenistan</option><option value="UAE">UAE</option><option value="UK">UK</option><option value="USA">USA</option><option value="Ukraine">Ukraine</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Vatican City">Vatican City</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option></select>
+        <input type="number" id="v1" placeholder="Enter Amount" oninput="runC()">
+        <div class="res" id="r1">Total: 0.00</div>
+    </div>
+
+    <div id="p3" class="page">
+        <select id="uT" onchange="runU()">
+            <option value="60">Time (Hours to Mins)</option>
+            <option value="0.62">Speed (Km/h to Mph)</option>
+            <option value="2.2">Weight (Kg to Lbs)</option>
+            <option value="3.28">Length (M to Feet)</option>
+        </select>
+        <input type="number" id="v2" placeholder="Value" oninput="runU()">
+        <div class="res" id="r2">Result: 0.00</div>
+    </div>
+</div>
+
+<script>
+    const list = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Eritrea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palestine","Panama","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saudi Arabia","Senegal","Serbia","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","Spain","Sri Lanka","Sudan","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tunisia","Turkey","Turkmenistan","UAE","UK","USA","Ukraine","Uruguay","Uzbekistan","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+
+    const sel1 = document.getElementById('s1'), sel2 = document.getElementById('s2');
+    list.forEach(c => {
+        let o1 = document.createElement('option'), o2 = document.createElement('option');
+        o1.text = o1.value = o2.text = o2.value = c;
+        sel1.add(o1); sel2.add(o2);
+    });
+    sel1.value = "USA"; sel2.value = "Pakistan";
+
+    function showP(p, b) {
+        document.getElementById('p1').classList.add('hide');
+        document.getElementById('p2').classList.add('hide');
+        document.getElementById('p3').classList.add('hide');
+        document.getElementById(p).classList.remove('hide');
+        document.getElementById('b1').classList.remove('active');
+        document.getElementById('b2').classList.remove('active');
+        document.getElementById('b3').classList.remove('active');
+        document.getElementById(b).classList.add('active');
+    }
+
+    function runC() {
+        let v = parseFloat(document.getElementById('v1').value);
+        if(isNaN(v)) { document.getElementById('r1').innerText = "Total: 0.00"; return; }
+        // Professional Multi-Rate Logic
+        let r = {"USA":1, "Pakistan":278, "Saudi Arabia":3.75, "UAE":3.67, "India":83, "UK":0.79, "Turkey":32};
+        let f = r[document.getElementById('s1').value] || 1.2;
+        let t = r[document.getElementById('s2').value] || 1.5;
+        document.getElementById('r1').innerText = "Total: " + (v * (t/f)).toFixed(2);
+    }
+
+    function runU() {
+        let v = parseFloat(document.getElementById('v2').value);
+        let m = parseFloat(document.getElementById('uT').value);
+        document.getElementById('r2').innerText = isNaN(v) ? "Result: 0.00" : "Total: " + (v * m).toFixed(2);
+    }
+</script>
+
+</body></html>
